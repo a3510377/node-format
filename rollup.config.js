@@ -14,9 +14,9 @@ export default {
     plugins: [
       flatDts({
         compilerOptions: {
-          declarationMap: true,
-        },
-      }),
-    ],
-  },
+          declarationMap: true
+        }
+      })
+    ]
+  }
 };
