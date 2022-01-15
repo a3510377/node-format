@@ -1,6 +1,7 @@
 name: publish
 env:
     CI: true
+
 on:
     push:
         branches:
