@@ -13,14 +13,14 @@ export interface config {
 declare global {
     interface String {
         /**格式化器
-    @example
-    ```js
-    "{awa}{0}".format({
-      awa: "Hi"
-    }, "b")  // Hi
-    "{0}".format("Hi")  // Hib
-    ```
-    */
+         @example
+        ```js
+        "{awa}{0}".format({
+            awa: "Hi"
+        }, "b")  // Hi
+        "{0}".format("Hi")  // Hib
+        ```
+        */
         format: format;
     }
 }

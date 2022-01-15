@@ -1,6 +1,6 @@
 {
-  "name": "@a3510377/format",
-  "version": "1.0.0",
+  "name": "monkey_format",
+  "version": "1.0.3",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "directories": {
@@ -24,7 +24,10 @@
   "keywords": [
     "format"
   ],
-  "author": "Monkey",
+  "author": {
+    "name": "monkey",
+    "email": "a102009102009@gmail.om"
+  },
   "husky": {
     "hooks": {
       "precommit": "lint-staged"
@@ -60,7 +63,7 @@
     "src/"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/a3510377"
   },
   "bugs": {
     "url": "https://github.com/a3510377/node-format/issues"
