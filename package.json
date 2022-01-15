@@ -1,5 +1,5 @@
 {
-  "name": "format",
+  "name": "@a3510377/format",
   "version": "1.0.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
