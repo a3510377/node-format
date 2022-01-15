@@ -1,6 +1,6 @@
 {
-  "name": "monkey_format",
-  "version": "1.0.3",
+  "name": "monkey-format",
+  "version": "1.0.4",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "directories": {

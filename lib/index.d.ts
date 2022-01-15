@@ -1,19 +1,13 @@
-declare type format = (
-    this: string,
-    ...data: Array<
-        | {
-              [key: string]: string;
-          }
-        | string
-    >
-) => string;
+declare type format = (this: string, ...data: Array<{
+    [key: string]: string;
+} | string>) => string;
 export interface config {
     [option: string]: unknown;
 }
 declare global {
     interface String {
         /**格式化器
-         @example
+        @example
         ```js
         "{awa}{0}".format({
             awa: "Hi"
