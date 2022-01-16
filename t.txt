@@ -1,0 +1,10 @@
+// "publishConfig": {
+//   "registry": "https://npm.pkg.github.com/a3510377"
+// },
+// "bugs": {
+//   "url": "https://github.com/a3510377/node-format/issues"
+// },
+// "repository": {
+//   "type": "git",
+//   "url": "https://github.com/a3510377/node-format.git"
+// }
