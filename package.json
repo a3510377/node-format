@@ -24,10 +24,7 @@
   "keywords": [
     "format"
   ],
-  "author": {
-    "name": "monkey",
-    "email": "a102009102009@gmail.om"
-  },
+  "author": "a3510377 <a102009102009@gmail.com>",
   "husky": {
     "hooks": {
       "precommit": "lint-staged"
