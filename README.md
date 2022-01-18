@@ -1,2 +1,25 @@
-github.com/a3510377/node-format
-[![Node.js Package](https://github.com/a3510377/node-format/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/a3510377/node-format/actions/workflows/npm-publish.yml)
+## nodejs package `monkey-format`
+
+### 下載我
+
+```cmd
+npm install monkey-format
+```
+
+### 使用我
+
+```js
+import { formatInit } from "monkey-format";
+
+formatInit();
+
+console.log("{0} {1} {2}".format("a", "b", "c")); // -> "a b c"
+
+console.log(
+    "{a} {b} {c}".format({
+        a: "0",
+        b: "1",
+        c: "2"
+    })
+); // -> "0 1 2"
+```

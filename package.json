@@ -1,6 +1,6 @@
 {
   "name": "monkey-format",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "directories": {
@@ -22,7 +22,10 @@
     "node": ">= 8"
   },
   "keywords": [
-    "format"
+    "format",
+    "monkey-format",
+    "monkey",
+    "javascript format python"
   ],
   "author": "a3510377 <a102009102009@gmail.com>",
   "husky": {
