@@ -28,11 +28,6 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   cache: "npm"
             - run: npm ci
-            # - name: publish
-            #   run: |
-            #       git config --global user.email "a102009102009@google.com"
-            #       git config --global user.name "a3510377"
-
             - name: "提交檔案"
               run: |
                   if [ $(git status --porcelain | wc -l) -eq "0" ]; then
@@ -48,8 +43,8 @@ jobs:
                   fi
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-            - name: "推送變更"
-              uses: ad-m/github-push-action@master
-              with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  branch: ${{ github.ref }}
+            # - name: "推送變更"
+            #   uses: ad-m/github-push-action@master
+            #   with:
+            #       github_token: ${{ secrets.GITHUB_TOKEN }}
+            #       branch: ${{ github.ref }}
