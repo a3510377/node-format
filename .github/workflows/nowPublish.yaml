@@ -1,0 +1,40 @@
+name: Node.js now publish
+
+on:
+    workflow_dispatch:
+        inputs:
+            version:
+                description: "版本號"
+                default: "minor"
+                required: true
+                options:
+                    - patch
+                    - minor
+                    - major
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        strategy:
+        matrix:
+            node-version: [16.x]
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v2
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: "npm"
+
+            - name: publish
+              run: |
+                  touch .npmrc
+                    @myregistry:registry=http://myregistry.local
+                    //myregistry.local/:_authToken=${NPM_AUTH_TOKEN}
+                    #always-auth=true
+                  npm version  ${{ inputs.version }} 
+                  npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
