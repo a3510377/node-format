@@ -8,8 +8,8 @@ on:
                 default: "minor"
                 required: true
                 options:
-                    - patch
-                    - major
+                    - "patch"
+                    - "major"
 
 jobs:
     build:
