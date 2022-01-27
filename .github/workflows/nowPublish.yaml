@@ -5,11 +5,10 @@ on:
         inputs:
             version:
                 description: "版本號"
-                default: "minor"
-                required: true
+                default: minor
                 options:
-                    - "patch"
-                    - "major"
+                    - patch
+                    - major
 
 jobs:
     build:
@@ -33,7 +32,7 @@ jobs:
                     @myregistry:registry=http://myregistry.local
                     //myregistry.local/:_authToken=${NPM_AUTH_TOKEN}
                     #always-auth=true
-                  npm version  ${{ inputs.version }} 
+                  npm version  ${{ github.event.inputs.version }} 
                   npm publish --access public
               env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+                  NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
