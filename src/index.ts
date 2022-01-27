@@ -59,12 +59,11 @@ export const formatInit = (_data?: config) => {
     let startStart = _data?.start?.start || defaultConfig.start.start,
         startEnd = _data?.start?.end || defaultConfig.start.end,
         endStart = _data?.end?.start || defaultConfig.end.start,
-        endEnd = _data?.end?.end || defaultConfig.end.end;
+        endEnd = _data?.end?.end || defaultConfig.end.end,
+        _ = safetySrc;
 
     const useReg = new RegExp(
-        `(?<!${safetySrc(startEnd)})${safetySrc(startStart)}(([$A-Za-z_][$A-Za-z0-9_]?)*|[0-9]*)${safetySrc(
-            endStart
-        )}(?<!${safetySrc(endEnd)})`
+        `(?<!${_(startEnd)})${_(startStart)}(([$A-Za-z_][$A-Za-z0-9_]?)*|[0-9]*)${_(endStart)}(?<!${_(endEnd)})`
     );
     String.prototype.format = function(...data) {
         let _data: { [key: string]: any } = {},
