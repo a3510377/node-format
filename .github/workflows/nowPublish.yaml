@@ -29,13 +29,13 @@ jobs:
 
             - name: publish
               run: |
-                  npm version  ${{ github.event.inputs.version }} 
+                  npm version  ${{ github.event.inputs.version }}
                   npm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
             - name: "提交檔案"
-                run: |
+              run: |
                   if [ $(git status --porcelain | wc -l) -eq "0" ]; then
                     echo "  🔴 無變化"
                   else
@@ -48,5 +48,5 @@ jobs:
             - name: "推送變更"
               uses: ad-m/github-push-action@master
               with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                branch: ${{ github.ref }}
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  branch: ${{ github.ref }}
