@@ -24,17 +24,14 @@ jobs:
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v2
               with:
+                  registry-url: "https://registry.npmjs.org"
                   node-version: ${{ matrix.node-version }}
                   cache: "npm"
-
+            - run: npm ci
             - name: publish
               run: |
                   git config --global user.email "a102009102009@google.com"
                   git config --global user.name "a3510377"
-                  npm version  ${{ github.event.inputs.version }}
-                  npm publish --access public
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
             - name: "提交檔案"
               run: |
@@ -46,7 +43,11 @@ jobs:
                     git config --global user.name "a3510377"
                     git add .
                     git commit -m "更新"
+                    npm version  ${{ github.event.inputs.version }}
+                    npm publish --access public
                   fi
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
             - name: "推送變更"
               uses: ad-m/github-push-action@master
               with:
