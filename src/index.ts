@@ -1,5 +1,25 @@
 type format = (this: string, ...data: Array<{ [key: string]: string } | string>) => string;
+
+interface start_endConfig {
+    /**設定開始
+     * @type {{?string}}
+     */
+    start?: string;
+    /**設定結尾
+     * @type {{?string}}
+     */
+    end?: string;
+}
+
 export interface config {
+    /**設定格式化開始
+     * @type {?start_endConfig}
+     */
+    start?: start_endConfig;
+    /**設定格式化結尾
+     * @type {?start_endConfig}
+     */
+    end?: start_endConfig;
     [option: string]: unknown;
 }
 
@@ -20,7 +40,11 @@ declare global {
 
 export {};
 
-const mainRe = /{(?!{)(([$A-Za-z_][$A-Za-z0-9_]?)*|[0-9]*)}(?!})/gm;
+const defaultConfig = { start: { start: "", end: "" }, end: { start: "", end: "" } };
+
+const safetySrc = (src: string) =>
+    src.replace(/[\-\(\)\[\]\.\*\^\\\:\+\{\}\,\$\<\>\"\'\|\?\<\!\=]/gm, src => `\\${src}`);
+
 const isDict = (data: Object | string): boolean => {
     let string = "";
     try {
@@ -32,6 +56,16 @@ const isDict = (data: Object | string): boolean => {
     }
 };
 export const formatInit = (_data?: config) => {
+    let startStart = _data?.start?.start || defaultConfig.start.start,
+        startEnd = _data?.start?.end || defaultConfig.start.end,
+        endStart = _data?.end?.start || defaultConfig.end.start,
+        endEnd = _data?.end?.end || defaultConfig.end.end;
+
+    const useReg = new RegExp(
+        `(?<!${safetySrc(startEnd)})${safetySrc(startStart)}(([$A-Za-z_][$A-Za-z0-9_]?)*|[0-9]*)${safetySrc(
+            endStart
+        )}(?<!${safetySrc(endEnd)})`
+    );
     String.prototype.format = function(...data) {
         let _data: { [key: string]: any } = {},
             all = 0;
@@ -40,14 +74,13 @@ export const formatInit = (_data?: config) => {
             if (isDict(_)) _data = { ..._data, ...(_ as Object) };
             else _data[(all++).toString()] = _ as string;
         });
-        /* TODO */
-        // new RegExp("{(?!{)(([$A-Za-z_][$A-Za-z0-9_]?)*|[0-9]*)}(?!})", "gm");
+
         return this.toString()
-            .replace(mainRe, (_, src) => {
+            .replace(useReg, (_, src) => {
                 if (src && src in _data) return _data[src];
                 return _;
             })
-            .replace("{{", "{")
-            .replace("}}", "}");
+            .replace(startEnd + startStart, startStart)
+            .replace(endEnd + endStart, endStart);
     };
 };
