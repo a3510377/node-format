@@ -9,7 +9,6 @@ on:
                 required: true
                 options:
                     - patch
-                    - minor
                     - major
 
 jobs:
