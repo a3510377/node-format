@@ -1180,11 +1180,6 @@
     "yargs-parser" "13.1.2"
     "yargs-unparser" "1.6.0"
 
-"monkey-format@^1.0.4":
-  "integrity" "sha512-/uWoFhg1V2mPcsf+W2yzVofFe2V41xiIrdoBGnU8A1m145WMjS9QBe9dsEspTa4cHEOjTKlh9daTqMvudLgXQg=="
-  "resolved" "https://registry.npmjs.org/monkey-format/-/monkey-format-1.0.4.tgz"
-  "version" "1.0.4"
-
 "ms@^2.1.1", "ms@2.1.1":
   "integrity" "sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg=="
   "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.1.tgz"
