@@ -28,10 +28,10 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   cache: "npm"
             - run: npm ci
-            - name: publish
-              run: |
-                  git config --global user.email "a102009102009@google.com"
-                  git config --global user.name "a3510377"
+            # - name: publish
+            #   run: |
+            #       git config --global user.email "a102009102009@google.com"
+            #       git config --global user.name "a3510377"
 
             - name: "提交檔案"
               run: |
